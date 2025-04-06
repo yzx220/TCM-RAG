@@ -33,3 +33,6 @@ The project is a comprehensive framework for Traditional Chinese Medicine (TCM) 
 - Please pay attention to the `requirements.txt` files in each directory
 - Different packages are required for different modules
 - Note that different versions of transformers may cause errors 
+
+## dataset
+Please refer to https://huggingface.co/datasets/zhangqw/TCM/tree/main for the dataset
