@@ -1,8 +1,8 @@
 python index_builder.py ^
     --retrieval_method bge ^
-    --model_path F:\work\FlashRAG\model\bge-large-zh^
-    --corpus_path F:\work\FlashRAG\examples\quick_start\indexes\general_knowledge.jsonl ^
-    --save_dir F:\work\FlashRAG\examples\quick_start\indexes\ ^
+    --model_path ^
+    --corpus_path  ^
+    --save_dir  ^
     --use_fp16 ^
     --max_length 512 ^
     --batch_size 256 ^
