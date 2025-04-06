@@ -5,7 +5,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export OMP_NUM_THREADS=8
 
 # 基本参数
-MODEL_NAME="BAAI/bge-m3"
+MODEL_NAME=""
 OUTPUT_DIR="./output/tcm_bge_m3"
 TRAIN_DATA="./data/tcm_data"
 TCM_VOCAB_PATH="./data/tcm_vocab.txt"
