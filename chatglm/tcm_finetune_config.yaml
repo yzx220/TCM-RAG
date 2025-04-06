@@ -1,0 +1,60 @@
+# 数据配置
+data_config:
+  train_file: "data/tcm_train.json"  # 训练数据文件路径
+  val_file: "data/tcm_val.json"      # 验证数据文件路径
+  test_file: "data/tcm_test.json"    # 测试数据文件路径
+  num_proc: 4                        # 数据处理的并行进程数
+
+# 模型输入输出长度配置
+max_input_length: 512                # 输入序列最大长度
+max_output_length: 256               # 输出序列最大长度
+
+# 训练参数配置
+training_args:
+  output_dir: "./output/tcm_model"   # 模型输出目录
+  num_train_epochs: 3                # 训练轮数
+  per_device_train_batch_size: 4     # 训练批次大小
+  per_device_eval_batch_size: 4      # 评估批次大小
+  gradient_accumulation_steps: 8      # 梯度累积步数
+  learning_rate: 2.0e-5              # 学习率
+  weight_decay: 0.01                 # 权重衰减
+  max_grad_norm: 1.0                 # 梯度裁剪
+  
+  # 评估策略
+  evaluation_strategy: "steps"        # 按步数进行评估
+  eval_steps: 500                    # 每500步评估一次
+  save_strategy: "steps"             # 按步数保存模型
+  save_steps: 500                    # 每500步保存一次
+  
+  # 日志设置
+  logging_dir: "./logs"              # 日志目录
+  logging_strategy: "steps"          # 按步数记录日志
+  logging_steps: 100                 # 每100步记录一次日志
+  
+  # 其他训练设置
+  fp16: true                         # 使用混合精度训练
+  warmup_ratio: 0.1                  # 预热比例
+  do_eval: true                      # 是否进行评估
+  predict_with_generate: true        # 使用生成模式进行预测
+  generation_config:
+    max_new_tokens: 256              # 生成时的最大新token数
+    do_sample: true                  # 使用采样策略
+    top_p: 0.9                       # 使用nucleus sampling
+    temperature: 0.7                 # 温度参数
+    repetition_penalty: 1.1          # 重复惩罚因子
+    length_penalty: 1.0              # 长度惩罚因子
+
+# PEFT配置（使用LoRA）
+peft_config:
+  peft_type: "LORA"                  # 使用LoRA方法
+  task_type: "CAUSAL_LM"            # 任务类型为因果语言模型
+  r: 8                              # LoRA秩
+  lora_alpha: 32                    # LoRA alpha参数
+  lora_dropout: 0.1                 # LoRA dropout
+  target_modules:                   # 目标模块
+    - "query_key_value"
+    - "dense"
+    - "dense_h_to_4h"
+    - "dense_4h_to_h"
+  bias: "none"                      # 是否包含偏置项
+  modules_to_save: []               # 需要保存的额外模块 
