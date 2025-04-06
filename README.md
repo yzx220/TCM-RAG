@@ -1,7 +1,7 @@
 # TCM-RAG Project Introduction
 
 ## Project Overview
-This project is a comprehensive framework for Traditional Chinese Medicine (TCM) knowledge retrieval and generation, featuring multiple components for model fine-tuning and application.
+The project is a comprehensive framework for Traditional Chinese Medicine (TCM) knowledge retrieval and generation with multiple components including model fine-tuning and application.
 
 ## Usage Guide
 
